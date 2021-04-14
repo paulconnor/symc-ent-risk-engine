@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "daf1cc09-0a3d-41bf-a1f9-a450cc64f1b5",
+		"name": "Symantec Enterprise Risk Engine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UserRisk",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"subject\": \"david.smith@bcm-demo110.com\",\r\n\"clientContext\": [{\r\n\"key\": \"transactionIdentifier\",\r\n\"value\": \"gga323a24\"\r\n}],\r\n\"ahContext\": [{\r\n\"key\": \"clientTxnId\",\r\n\"value\": \"client-txn-id-hhhwe23\"\r\n},\r\n{\r\n\"key\": \"txnId\",\r\n\"value\": \"txn-id-hd26se23\"\r\n}\r\n],\r\n\"providerContext\": [{\r\n\"key\": \"instanceId\",\r\n\"value\": \"brazil-instance-1\"\r\n}]\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://risk.iamdemo.broadcom.com:8080/UserRiskScoreEvaluator",
+					"protocol": "http",
+					"host": [
+						"risk",
+						"iamdemo",
+						"broadcom",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"UserRiskScoreEvaluator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostUserRisk",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"subject\": \"david.smith@bcm-demo110.com\",\r\n\"authStatus\": \"success\",\r\n\"riskEvalContext\": [ {\r\n\"key\": \"transactionId\",\r\n\"value\": \"txnId-hhhwe23\"\r\n},\r\n{\r\n\"key\": \"deviceId\",\r\n\"value\":\"device-sadf2343dd\"\r\n}],\r\n\"ahContext\": [{\r\n\"key\": \"clientTxnId\",\r\n\"value\": \"client-txn-id-hhhwe23\"\r\n},\r\n{\r\n\"key\": \"txnId\",\r\n\"value\": \"txn-id-hd26se23\"\r\n}\r\n],\r\n\"providerContext\": [{\r\n\"key\": \"instanceId\",\r\n\"value\": \"brazil-instance-1\"\r\n}]\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://risk.iamdemo.broadcom.com:8080/PostUserRiskScoreEvaluator",
+					"protocol": "http",
+					"host": [
+						"risk",
+						"iamdemo",
+						"broadcom",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"PostUserRiskScoreEvaluator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Risk",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://risk.iamdemo.broadcom.com:8080/UserRiskScore?userId=david.smith@bcm-demo110.com",
+					"protocol": "http",
+					"host": [
+						"risk",
+						"iamdemo",
+						"broadcom",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"UserRiskScore"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "david.smith@bcm-demo110.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

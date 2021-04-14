@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.ssp.risk.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.ssp.risk.name }}
+  replicas: 1 
+  revisionHistoryLimit: 0
+  progressDeadlineSeconds: 30
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.ssp.risk.name }}
+    spec:
+      containers:
+      - name: {{ .Values.ssp.risk.name }}
+        image: pconnor/symc-ent-risk-engine:latest
+        env:
+        - name: ICA_HOST
+          value: {{ .Values.ssp.risk.ica_host }}
+        - name: ICA_AUTHN
+          value: {{ .Values.ssp.risk.ica_authn }}
+        - name: CASB_TENANT
+          value: {{ .Values.ssp.risk.casb_tenant }}
+        - name: CASB_AUTHN
+          value: {{ .Values.ssp.risk.casb_authn }}
+        ports:
+        - hostPort: 8080
+          name: web
+          containerPort: 8080

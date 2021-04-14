@@ -1,0 +1,17 @@
+# Default values for ssp-analytics.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+#
+
+ssp:
+  risk:
+    name: dlp-risk-engine
+    host: dlp-risk-engine.risk.svc
+    port: 8080
+    ica_host: 'riskfabric.iamdemo.broadcom.com'
+    ica_authn: 'Basic YXBpdXNlcjpTeW00bm93IQ=='
+    casb_tenant: 'bcm-demo110com'
+    casb_authn: 'Basic MjIzYjRiMThkODU3MTFlYThkNjIwMjc2YWRlOGNiZmI6Q1BGblN3U1JTZ2FoVXBEeExvbzNlOVgxU1FMMmpUYTJkQ29LRXVDanl1Zw=='
+
+
+
